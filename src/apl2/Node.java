@@ -1,6 +1,8 @@
 // arquivo: src/apl2/Node.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
+//Daniel Borges Valentim - 10427564 
+//Enzo Pinheiro de Oliveira - 10434443
+//João Vitor Golfieri Mendonça - 10435460
 
 package apl2;
 
@@ -16,6 +18,69 @@ package apl2;
 
 public class Node {
 	
-	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
+	private String id;
+	private String nome;
+	private float nota;
+	private Node prev;
+	private Node next;
+
+
+	public Node() {
+		this("", "", 99.9f, null, null);
+	}
+
+	public Node(String id, String nome, float nota, Node prev, Node next) {
+		this.id = id;
+		this.nome = nome;
+		this.nota = nota;
+		this.prev = prev;
+		this.next = next;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public float getNota() {
+		return nota;
+	}
+
+	public void setNota(float nota) {
+		this.nota = nota;
+	}
+
+	public Node getPrev() {
+		return prev;
+	}
+
+	public void setPrev(Node prev) {
+		this.prev = prev;
+	}
 	
+	public Node getNext() {
+		return next;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+
+	@Override 
+	public String toString() {
+		String idPrev = (prev != null) ? prev.getId() : "null";
+		String idNext = (next != null) ? next.getId() : "null"; 
+		return idPrev + " <- (" + id + "; " + nome + "; " + nota + ") -> " + idNext;
+	}
 }

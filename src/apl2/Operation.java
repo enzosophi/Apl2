@@ -3,7 +3,9 @@
 //*************************** ATENÇÃO! *****************************
 // arquivo: src/apl2/Operation.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
+//Daniel Borges Valentim - 10427564 
+//Enzo Pinheiro de Oliveira - 10434443
+//João Vitor Golfieri Mendonça - 10435460
 
 package apl2;
 
@@ -19,8 +21,30 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém o mapeamento da coleção de dados {@code original} para a nova estrutura usada pelo sistema de notas. 
 	 */
 	public static DLinkedList map(final LinkedListOriginal original) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList novaLista = new DLinkedList(); 
+		NodeOriginal atual = original.getHead();
+
+		while (atual != null) {
+			int id = atual.getId();
+			String nome = atual.getNome();
+			int inteiro = atual.getInteiro(); 
+			int decimo = atual.getDecimo();
+
+			String novoId = "23.S1-" + String.format("%03d", id);
+			float nota;
+
+			if (inteiro == -1 || decimo == -1) {
+				nota = 99.9f;
+			}
+			else {
+				nota = Float.parseFloat(inteiro + "." + decimo);
+			}
+
+			novaLista.append(novoId, nome, nota); 
+			atual = atual.getNext();
+		}
+
+		return novaLista;
 	}
 
 	/**
@@ -33,8 +57,17 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada com nós que possuem apenas pessoas com notas válidas.
 	 */
 	public static DLinkedList filterRemoveNonGraded(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList listaFiltrada = new DLinkedList();
+		Node atual = data.getHead();
+
+		while (atual != null) {
+			if (atual.getNota() != 99.9f) {
+				listaFiltrada.append(atual.getId(), atual.getNome(), atual.getNota());
+			}
+			atual = atual.getNext();
+		}
+
+		return listaFiltrada;
 	}
 
 	/**
@@ -47,8 +80,17 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada com nós que possuem apenas pessoas com notas inválidas.
 	 */
 	public static DLinkedList filterRemoveGraded(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList listaFiltrada = new DLinkedList();
+		Node atual = data.getHead();
+
+		while (atual != null) {
+			if (atual.getNota() == 99.9f) {
+				listaFiltrada.append(atual.getId(), atual.getNome(), atual.getNota());
+			}
+			atual = atual.getNext();
+		}
+
+		return listaFiltrada;
 	}
 
 	/**
@@ -63,8 +105,17 @@ public class Operation {
 	 * @return Uma nova {@code DLinkedList} que contém a coleção de dados ({@code data}) filtrada somente com pessoas com notas maiores do que {@code average}.
 	 */
 	public static DLinkedList filterRemoveBelowAverage(final DLinkedList data, float average) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		DLinkedList listaFiltrada = new DLinkedList();
+		Node atual = data.getHead();
+
+		while (atual != null) {
+			if (atual.getNota() > average) {
+				listaFiltrada.append(atual.getId(), atual.getNome(), atual.getNota());
+			}
+			atual = atual.getNext();
+		}
+
+		return listaFiltrada;
 	}
 	
 	/**
@@ -77,8 +128,20 @@ public class Operation {
 	 * @return Média das notas ({@code float}) contidas na coleção de dados ({@code data}).
 	 */
 	public static float reduce(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		Node atual = data.getHead();
+		float soma = 0;
+		int contador = 0;
+
+		while (atual != null) {
+			if (atual.getNota() != 99.9f) {
+				soma += atual.getNota();
+				contador++;
+			}
+			atual = atual.getNext();
+		}
+
+		if (contador == 0) return 0f;
+		return soma / contador;
 	}
 
 	/**
