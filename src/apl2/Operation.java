@@ -155,8 +155,17 @@ public class Operation {
 	 * @return {@code String} com a coleção de dados separada por ponto-e-vírgula (dados de cada pessoa) e quebras de linha (cada pessoa).
 	 */
 	public static String mapToString(final DLinkedList data) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		StringBuilder sb = new StringBuilder();
+		Node atual = data.getHead();
+
+		while (atual != null) {
+			sb.append(atual.getId()).append(";")
+			  .append(atual.getNome()).append(";")
+			  .append(atual.getNota()).append("\n");
+			atual = atual.getNext();
+		}
+
+		return sb.toString();
 	}
 
 }

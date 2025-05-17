@@ -54,7 +54,14 @@ public class MainApl2 {
 		DLinkedList filteredNonGradedList = Operation.filterRemoveGraded(fixedList);
 		float average = Operation.reduce(filteredGradedList);
 		DLinkedList aboveAverageList = Operation.filterRemoveBelowAverage(filteredGradedList, average);
-		//String contents = Operation.mapToString(fixedList);
+		String contents = Operation.mapToString(fixedList);
+
+		try {
+			apl2.Data.saveStringToTextFile("dados.csv", contents);
+		} catch(Exception e) {
+			System.err.println("Erro ao salvar dados.csv");
+			e.printStackTrace();
+		}
 
 		while (true) {
 			System.out.println("\nSistema Conversor de Notas");
@@ -109,11 +116,11 @@ public class MainApl2 {
 					System.out.println("<<<<<<<<<< Lista com notas acima da média <<<<<<<<<<\n");
 					break;
 
-				//case 7:
-					//System.out.println(">>>>>>>>>> Lista mapeada para uma única string >>>>>>>>>>");
-					//System.out.println(contents);
-					//System.out.println("<<<<<<<<<< Lista mapeada para uma única string <<<<<<<<<<\n");
-					//break;
+				case 7:
+					System.out.println(">>>>>>>>>> Lista mapeada para uma única string >>>>>>>>>>");
+					System.out.println(contents);
+					System.out.println("<<<<<<<<<< Lista mapeada para uma única string <<<<<<<<<<\n");
+					break;
 
 				case 8:
 					System.out.println("Sistema finalizado.");
