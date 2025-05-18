@@ -7,7 +7,7 @@
 
 //Daniel Borges Valentim - 10427564 
 //Enzo Pinheiro de Oliveira - 10434443
-//João Vitor Golfieri Mendonça - 10435460
+//João Vitor Golfieri Mendonça - 10434460
 
 // - Referências:
 // - Enunciado da Atividade APL2 2025-1 (PDF fornecido pelo professor)
